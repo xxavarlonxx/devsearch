@@ -1,9 +1,24 @@
 {% extends 'main.html' %}
-
 {% block content %}
-<h1>Projects Template</h1>
-<p>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</p>
+
+<p>Hello, your are the {{page}} page</p>
+
+{% if number > 10 %}
+<p>Number is greater than 10</p>
+{% elif number == 10 %}
+<p>Number is exactly 10</p>
+{% else %}
+<p>Number is less than 10</p>
+{% endif %}
+
+<hr>
+
+<h1>Projects</h1>
+
+<ul>
+    {% for project in projects %}
+    <li>Title: <a href="{% url 'project' project.id %}">{{ project.title }}</a> --- {{project.description}}</li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}
